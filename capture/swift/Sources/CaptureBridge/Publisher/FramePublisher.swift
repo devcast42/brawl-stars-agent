@@ -11,13 +11,15 @@ final class FramePublisher {
 
     func publish(_ pixelBuffer: CVPixelBuffer) {
 
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
+        guard let frame = FrameEncoder.encode(pixelBuffer) else {
+            print("❌ No se pudo codificar el frame")
+            return
+        }
 
-        print("📦 Publicando frame \(width)x\(height)")
+        print("📦 Publicando frame \(frame.width)x\(frame.height)")
 
         do {
-            try transport.send(pixelBuffer: pixelBuffer)
+            try transport.send(frame)
         } catch {
             print("❌ Error enviando frame: \(error)")
         }

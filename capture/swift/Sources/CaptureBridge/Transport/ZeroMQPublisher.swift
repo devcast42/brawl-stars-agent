@@ -1,16 +1,15 @@
-import CoreVideo
-
 final class ZeroMQPublisher: FrameTransport {
 
-    func send(
-        pixelBuffer: CVPixelBuffer
-    ) throws {
+    func send(_ frame: EncodedFrame) throws {
 
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-
-        print("📡 Enviando frame \(width)x\(height)")
+        print("""
+        📡 Frame recibido
+        -----------------
+        Width: \(frame.width)
+        Height: \(frame.height)
+        BytesPerRow: \(frame.bytesPerRow)
+        Size: \(frame.data.count) bytes
+        """)
 
     }
-
 }
