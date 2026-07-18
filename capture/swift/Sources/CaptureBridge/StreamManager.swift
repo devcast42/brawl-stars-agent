@@ -28,18 +28,6 @@ final class StreamManager {
             )
         }
 
-        guard let display = content.displays.first(where: {
-            $0.frame.intersects(window.frame)
-        }) else {
-            throw NSError(
-                domain: "CaptureBridge",
-                code: 2,
-                userInfo: [
-                    NSLocalizedDescriptionKey: "No se encontró el display"
-                ]
-            )
-        }
-
         let filter = SCContentFilter(
             desktopIndependentWindow: window
         )
