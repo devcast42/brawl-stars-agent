@@ -1,10 +1,14 @@
 import Foundation
+import AppKit
 
 @available(macOS 15.0, *)
 @main
 struct CaptureBridge {
 
     static func main() async {
+
+        // Inicializa AppKit
+        _ = NSApplication.shared
 
         do {
 
@@ -21,7 +25,5 @@ struct CaptureBridge {
             print(error)
 
         }
-
     }
-
 }
