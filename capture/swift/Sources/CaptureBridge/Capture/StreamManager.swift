@@ -21,6 +21,8 @@ final class StreamManager {
 
     configuration.width = Int(window.frame.width)
     configuration.height = Int(window.frame.height)
+    
+    configuration.pixelFormat = kCVPixelFormatType_32BGRA
 
     configuration.minimumFrameInterval = CMTime(
         value: 1,

@@ -1,5 +1,5 @@
-import Foundation
 import CZMQ
+import Foundation
 
 final class ZeroMQPublisher: FrameTransport {
 
@@ -37,7 +37,21 @@ final class ZeroMQPublisher: FrameTransport {
 
     func send(_ frame: EncodedFrame) throws {
 
-        print("📡 Frame listo para enviar (\(frame.data.count) bytes)")
+        let message = FrameSerializer.serialize(frame)
+
+        message.withUnsafeBytes { buffer in
+
+            guard let base = buffer.baseAddress else {
+                return
+            }
+
+            zmq_send(
+                socket,
+                base,
+                message.count,
+                0
+            )
+        }
 
     }
 }

@@ -32,6 +32,18 @@ enum FrameEncoder {
             count: size
         )
 
+        let pixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
+
+print("""
+PixelBuffer
+-----------
+Format: \(pixelFormat)
+Width: \(width)
+Height: \(height)
+BytesPerRow: \(bytesPerRow)
+Size: \(data.count)
+""")
+
         return EncodedFrame(
             data: data,
             width: width,
