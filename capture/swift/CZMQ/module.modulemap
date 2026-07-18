@@ -1,0 +1,5 @@
+module CZMQ [system] {
+    header "/opt/homebrew/include/zmq.h"
+    link "zmq"
+    export *
+}

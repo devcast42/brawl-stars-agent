@@ -17,8 +17,18 @@ let package = Package(
     ],
 
     targets: [
+
+        .systemLibrary(
+            name: "CZMQ",
+            path: "CZMQ",
+            pkgConfig: "libzmq"
+        ),
+
         .executableTarget(
-            name: "CaptureBridge"
+            name: "CaptureBridge",
+            dependencies: [
+                "CZMQ"
+            ]
         )
     ]
 )
