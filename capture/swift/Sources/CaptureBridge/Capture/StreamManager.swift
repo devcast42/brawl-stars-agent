@@ -13,18 +13,9 @@ final class StreamManager {
 
     func start() async throws {
 
-    print("🔍 Buscando BlueStacks...")
-
     let window = try await WindowFinder.blueStacksWindow()
 
-    print(window.windowID)
-    print(window.title ?? "")
-    print(window.owningApplication?.applicationName ?? "")
-    print(window.frame)
-
-    print("Antes del filtro")
     let filter = SCContentFilter(desktopIndependentWindow: window)
-    print("Después del filtro")
 
     let configuration = SCStreamConfiguration()
 
